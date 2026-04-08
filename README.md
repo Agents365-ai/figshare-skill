@@ -18,6 +18,7 @@ Works with all major AI coding agents that support the [Agent Skills](https://ag
 
 | Platform | Status | Details |
 |----------|--------|---------|
+| **Codex** | ✅ Full support | Native `SKILL.md` plus `agents/openai.yaml` UI metadata |
 | **Claude Code** | ✅ Full support | Native SKILL.md format |
 | **OpenClaw** | ✅ Full support | `metadata.openclaw` namespace |
 | **SkillsMP** | ✅ Indexed | GitHub topics configured |
@@ -51,6 +52,13 @@ Public search / article / download endpoints work with no token at all.
 
 ## Skill Installation
 
+### Codex
+
+```bash
+# Global install (auto-discovered by Codex)
+git clone https://github.com/Agents365-ai/figshare-skill.git ~/.codex/skills/figshare-skill
+```
+
 ### Claude Code
 
 ```bash
@@ -82,6 +90,7 @@ skills install figshare-skill
 
 | Platform | Global path | Project path |
 |----------|-------------|--------------|
+| Codex | `~/.codex/skills/figshare-skill/` | N/A |
 | Claude Code | `~/.claude/skills/figshare-skill/` | `.claude/skills/figshare-skill/` |
 | OpenClaw | `~/.openclaw/skills/figshare-skill/` | `skills/figshare-skill/` |
 | SkillsMP | N/A (installed via CLI) | N/A |
@@ -91,6 +100,8 @@ skills install figshare-skill
 Just describe what you want:
 
 ```
+> Use $figshare-skill to search Figshare for "single cell" datasets and show me the top 10
+
 > Search figshare for "single cell" datasets and show me the top 10
 
 > Download every file of https://figshare.com/articles/dataset/xxx/31957606 into ./data
@@ -115,6 +126,7 @@ All scripts read `FIGSHARE_TOKEN` from the environment and depend only on `curl`
 ## Files
 
 - `SKILL.md` — **the only required file**. Loaded by all platforms as the skill instructions.
+- `agents/openai.yaml` — Codex UI metadata for skill discovery and prompt chips
 - `scripts/upload.sh` — multi-part upload helper
 - `scripts/download.sh` — batch downloader
 - `scripts/new-version.sh` — new-version workflow

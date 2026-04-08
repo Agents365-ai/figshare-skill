@@ -18,6 +18,7 @@
 
 | 平台 | 状态 | 说明 |
 |------|------|------|
+| **Codex** | ✅ 完全支持 | 原生 `SKILL.md` + `agents/openai.yaml` 界面元数据 |
 | **Claude Code** | ✅ 完全支持 | 原生 SKILL.md 格式 |
 | **OpenClaw** | ✅ 完全支持 | `metadata.openclaw` 命名空间 |
 | **SkillsMP** | ✅ 已收录 | GitHub topics 已配置 |
@@ -51,6 +52,13 @@
 
 ## 安装
 
+### Codex
+
+```bash
+# 全局安装（Codex 自动发现）
+git clone https://github.com/Agents365-ai/figshare-skill.git ~/.codex/skills/figshare-skill
+```
+
 ### Claude Code
 
 ```bash
@@ -82,6 +90,7 @@ skills install figshare-skill
 
 | 平台 | 全局路径 | 项目路径 |
 |------|----------|----------|
+| Codex | `~/.codex/skills/figshare-skill/` | N/A |
 | Claude Code | `~/.claude/skills/figshare-skill/` | `.claude/skills/figshare-skill/` |
 | OpenClaw | `~/.openclaw/skills/figshare-skill/` | `skills/figshare-skill/` |
 | SkillsMP | N/A（CLI 安装） | N/A |
@@ -91,6 +100,8 @@ skills install figshare-skill
 直接描述你想做什么：
 
 ```
+> 使用 $figshare-skill 搜索 figshare 上的 "single cell" 数据集，并返回前 10 条
+
 > 在 figshare 上搜索 "single cell" 数据集，返回前 10 条
 
 > 把 https://figshare.com/articles/dataset/xxx/31957606 的全部文件下载到 ./data
@@ -115,6 +126,7 @@ skills install figshare-skill
 ## 文件说明
 
 - `SKILL.md` —— **唯一必需的文件**，所有平台都会加载它作为技能指令
+- `agents/openai.yaml` —— Codex 的技能 UI 元数据，用于发现与快捷提示
 - `scripts/upload.sh` —— 多分片上传
 - `scripts/download.sh` —— 批量下载
 - `scripts/new-version.sh` —— 新版本工作流
